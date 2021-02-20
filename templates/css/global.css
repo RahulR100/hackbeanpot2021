@@ -1,5 +1,5 @@
 .bg{
-    background: url(../images/rubber\ ducky) no-repeat;
+    background: url("../images/rubber ducky.jpg") no-repeat;
     width: 100%;
     height: 100vh;
     background-size: cover;
@@ -20,4 +20,3 @@
         background-size: 300%;
     }
 }
-
