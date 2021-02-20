@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Products(models.Model):
+class Product(models.Model):
 	title 		= models.CharField(max_length=120)
 	userListed 	= models.TextField()
 	thumbnail	= models.ImageField()
