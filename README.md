@@ -1,1 +1,2 @@
-# hackbeanpot2021 by Jaron Cui, Connie Liu, Will Priebe, Rahul Rao
+# HackBeanpot 2021!
+## Jaron Cui, Connie Liu, William Priebe, Rahul Rao
