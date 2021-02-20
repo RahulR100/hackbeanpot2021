@@ -8,5 +8,5 @@ class User(AbstractUser, models.Model):
 	email 			= models.CharField(max_length=255)
 	phone_number 	= models.PositiveIntegerField(null=True, blank=True)
 	address 		= models.TextField()
-	is_buyer		= models.BooleanField(default=False)
+	is_seller		= models.BooleanField(default=False)
 	cart 			= models.ForeignKey('cart.Cart', on_delete=models.CASCADE, null=True, blank=True)
