@@ -6,12 +6,17 @@
         <title>Registration Form </title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/global.css">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
 
     </head>
     <body>
-        
-        <section class="container bg-gray-300">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" name="submit">Register</button>
+        </form>
+        <!--<section class="container bg">
             <section class = "row">
                 <section class="col-lg-3"></section>
                 <section class="col-lg-6">
@@ -24,34 +29,34 @@
                         <div class="row">
                             <div class="col-lg-8">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" name="fname" class="form-control" id="firstName" placeholder="Enter your first name" required>
+                                <input type="text" name="first_name" class="form-control" id="firstName" placeholder="Enter your first name" required>
                             </div>
                             <div class="col-sm-4">
                                 <label for="middleI" class="form-label">Middle Initial</label>
-                                <input type="text" name="Mname" class="form-control" id="middleI">
+                                <input type="text" name="middle_initial" class="form-control" id="middleI">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" name="lname" class="form-control" id="lastName" placeholder="Enter your last name" required>
+                                <input type="text" name="last_name" class="form-control" id="lastName" placeholder="Enter your last name" required>
                             </div>   
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <label>Username</label>
-                                <input type="text" class="form-control" id="uName" placeholder="Username must be between 8 and 16 characters" 
+                                <input type="text" name="username" class="form-control" id="uName" placeholder="Username must be between 8 and 16 characters" 
                                     minlength= 8 maxlength= 16 required>
                             </div>                
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter your Email" required>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter your Email" required>
                             </div>
                             <div class="col-lg-6">
                                 <label for="phoneNum" class="form-label">Phone #</label>
-                                <input type="tel" name="phoneNum" class="form-control" id="phoneNum" placeholder="Enter your Phone #">
+                                <input type="tel" name="phone_number" class="form-control" id="phoneNum" placeholder="Enter your Phone #">
                             </div>                        
                         </div>
 
@@ -63,7 +68,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="rePassword" class="form-label">Retype password</label>
-                                <input type="password" name="rePassword" class="form-control" id="rePassword" placeholder="Enter the same password" required>
+                                <input type="password" name="confirm_password" class="form-control" id="rePassword" placeholder="Enter the same password" required>
                             </div>                        
                         </div>
                         <div class="mb-3 form-check">
@@ -78,8 +83,7 @@
                             </div>              
                         </div>
 
-                        <!--
-                        <div class="row">
+                        <!--<div class="row">
                             <div class="col-lg-12">
                                 <label for="address2" class="form-label">Address Line 2</label>
                                 <input type="text" name="address2" class="form-control" id="Address2" placeholder="Address line 2">
@@ -419,7 +423,7 @@
                 </section>
                 <section class="col-lg-3"></section>
             </section>
-        </section>
+        </section>-->
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
         
