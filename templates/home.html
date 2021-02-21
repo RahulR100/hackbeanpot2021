@@ -28,6 +28,19 @@
         cursor: pointer;
       }
 
+      .button { 
+        color: #fff; 
+        background-color: #555; 
+        padding: 1em; 
+        margin: 1em;
+        position: absolute; 
+        right: 1em; 
+        top: 1em; 
+        border-radius: 0.5em;
+        border-bottom: 2px #222 solid; 
+        cursor: pointer; 
+      }
+
       .mapboxgl-popup {
         max-width: 200px;
       }
@@ -36,10 +49,36 @@
         text-align: center;
         font-family: 'Open Sans', sans-serif;
       }
+
+      #menu {
+        width: 20vw;
+        padding: 10px;
+        display: block;
+      }
+      #items {
+        width: 20vw;
+        padding: 10px 0;
+        display: block;
+      }
+      #search {
+
+      }
+      .btn-group button {
+        background-color: #EEEEEE;
+        padding: 4px 8px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        width: 16vw; /* Set a width if needed */
+        display: none; /* Make the buttons appear below each other */
+      }
     </style>
   </head>
   <body>
-   <div id='map'></div>
+    <div id="menu" class="sidebar">
+      <input id="search" type="text" onkeyup="inputHandler()">
+      <div id="items" class="btn-group">
+  
+      </div>
+    <div id='map'></div>
 
     <script>
       mapboxgl.accessToken = 
