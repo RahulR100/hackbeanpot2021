@@ -45,24 +45,22 @@
       mapboxgl.accessToken = 
         'pk.eyJ1IjoiY2x1ZWxlc3M0IiwiYSI6ImNrbGQ5d2hwcjBxNGsydm9iMW9saXAxZW0ifQ.9sZd8Fc8ojC_ycnEHXNZ_Q';
       
-      
-      // var loc = [-77.0369, 38.9072]; // washington dc
-
-      
+      // finds device's current location (is a geolocation api)
       navigator.geolocation.getCurrentPosition(successLocation, 
         errorLocation, { enableHighAccuracy: true
       })
     
-      
+      // in case unable to find device's location
       function errorLocation() {
         setupMap([0,0])
-        
       }
 
+      // with device's location, sets up map
       function successLocation(position) {
-        setupMap([position.coords.longitude, position.coords.latitude]); // northeastern 
+        setupMap([position.coords.longitude, position.coords.latitude]); 
       }
 
+      // sets up map and pins 
       function setupMap(center) {
         var map = new mapboxgl.Map({
           container: 'map',
@@ -71,7 +69,7 @@
             zoom: 14
         })
 
-        // my location 
+        // my location pin
         var myLocation = new mapboxgl.Marker()
           .setLngLat(center)
           .addTo(map);
