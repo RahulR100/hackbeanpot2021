@@ -104,7 +104,6 @@ body { margin:0; padding:0; }
     cursor: pointer; /* Pointer/hand icon */
     width: 16vw; /* Set a width if needed */
     display: block; /* Make the buttons appear below each other */
-    display: none; /* Make the buttons appear below each other */
 }
 
 ul {

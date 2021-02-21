@@ -1,5 +1,5 @@
-//{title - str, userdets, image, quantity, price - double, location - str, description -str, tags}
-// location: longitude,latitude
+
+const allProductInfos =
 const allProductInfos = [{title: "Snow",
 location: "-72.4,36.3",
 quantity: 6,
@@ -66,33 +66,6 @@ quantity: 200,
 price: 0,
 description: "Free, warm socks. Not necessarily clean or good-smelling",
 tags: "free, clothing"}];
-const items = [{title: "apple", location: 1, quantity: 2}, {title: "toilet paper", location: 0, quantity: 6}]
-
-// data points (hardcoded rn)/*
-  /*var geojson = {
-    type: 'FeatureCollection',
-    features: [{
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-71.0875, 42.3398]
-      },
-      properties: {
-        title: 'Northeastern',
-        description: 'Virtual Quad ;)'
-      }
-    }, {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-71.1049, 42.3374]
-        },
-      properties: {
-        title: 'Boston Children Hospital',
-        description: 'For the children'
-      }
-    }]
-  }*/
 
 // --- DATA RETRIEVAL & PROCESSING --- \\
 
@@ -127,7 +100,7 @@ function filteredProductInfos() {
     || productFilters.quantity(productInfo.quantity)
     || productFilters.price(productInfo.price)
     || productFilters.description(productInfo.description)
-    || productFilters.tags(productInfo);
+    || productFilters.tags(productInfo.tags);
 
   return allProductInfos.filter(totalFilter);
 }
@@ -170,7 +143,7 @@ function setupMap(center) {
   // add markers to map
   filteredProductInfos().forEach(productInfo => addMarker(productInfoToFeatures(productInfo)));
 }
-console.log(filteredProductInfos());
+
 function updateMarkers(productInfos) {
   markers.forEach(function(marker) {
     marker.remove();
@@ -231,6 +204,7 @@ const updateSearchResults = function() {
   const inString = (sub, sup) => sup.toLowerCase().includes(sub.toLowerCase());
   productFilters.title = title => inString(searchInput, title);
   productFilters.description = description => inString(searchInput, description);
+  productFilters.tags = tags => inString(searchInput, tags);
 
   const products = filteredProductInfos();
 
