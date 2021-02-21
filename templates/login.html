@@ -11,21 +11,25 @@
 
     </head>
     <body>
-        <section class="container-fluid rubberduckbg">
+        <section class="container-fluid">
             <section class = "row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
+                    {% if status == False %}
+                         <div class="alert alert-danger">
+                            There was an error authenticating you. Please re enter your information and try again
+                        </div>
+                    {% endif %}
                     <form class="form-container" method="POST">
                         <h2>Log In</h2>
                         {% csrf_token %}
-                        <!--<div class="mb-3">
+                        <div class="mb-3">
                           <label for="username" class="form-label">Username</label>
                           <input type="text" name="username" class="form-control" id="username">
                         </div>
                         <div class="mb-3">
                           <label for="password" class="form-label">Password</label>
                           <input type="password" name="password" class="form-control" id="password">
-                        </div>-->
-                        {{ form.as_p }}
+                        </div>
                         <button type="submit" class="btn btn-primary">Log in</button>
                       </form>
                 </section>
