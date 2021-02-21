@@ -9,9 +9,7 @@ def register_view(request, *args, **kwargs):
 	if form.is_valid():
 		form.save()
 
-	context = {
-		'form': form
-	}
+	context = {'form': form}
 
 	return render(request, 'register.html', context)
 

@@ -3,110 +3,73 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content = "width=device-width, initial-scale=1">
-        <title>Registration Form </title>
+        <title>Edit Profile </title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+        <link rel="stylesheet" type="text/css" href="css/global.css">
 
     </head>
     <body>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" name="submit">Register</button>
-        </form>
-        <!--<section class="container bg">
-            <section class = "row">
-                <section class="col-lg-3"></section>
-                <section class="col-lg-6">
+        
+        <section class="container-fluid">
+            <section class = "row justify-content-center">
+                <section class="col-lg-2"></section>
+                <section class="col-lg-8">
                    
                     <form class="form-container">
                         <h1>
-                            Registration Form
+                            Edit Profile
                         </h1>
-
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" name="first_name" class="form-control" id="firstName" placeholder="Enter your first name" required>
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="middleI" class="form-label">Middle Initial</label>
-                                <input type="text" name="middle_initial" class="form-control" id="middleI">
-                            </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Old full name: PLACEHOLDER</span>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" name="last_name" class="form-control" id="lastName" placeholder="Enter your last name" required>
-                            </div>   
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label>Username</label>
-                                <input type="text" name="username" class="form-control" id="uName" placeholder="Username must be between 8 and 16 characters" 
-                                    minlength= 8 maxlength= 16 required>
-                            </div>                
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <label>Email</label>
-                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter your Email" required>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="phoneNum" class="form-label">Phone #</label>
-                                <input type="tel" name="phone_number" class="form-control" id="phoneNum" placeholder="Enter your Phone #">
-                            </div>                        
-                        </div>
-
                         
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="New First Name" id="changeFName" aria-label="changeFName" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="New Middle initial" aria-label="changeMName" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="New Last Name" aria-label="changeLName" aria-describedby="basic-addon1">
+                       </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Old Username: PLACEHOLDER</span>
+                            <input type="text" class="form-control" placeholder="New username" aria-label="Username" aria-describedby="basic-addon1">
+                       </div>
+                          
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon2">Old Email: PLACEHOLDER</span>
+                            <input type="text" class="form-control" placeholder="New Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                           </div>
+                          
+                          <label for="changeAddress1" class="form-label">Edit address</label>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon3">Old full address</span>
+                            <input type="text" class="form-control" placeholder="New full address" id="changeAddress1" aria-describedby="basic-addon3">
+                          </div>
+                          <!--
+
+                          
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon3">Old line 2 of address</span>
+                            <input type="text" class="form-control" placeholder="New line 2" id="changeAddress2" aria-describedby="basic-addon3">
+                          </div>
+                          
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon3">Old city</span>
+                            <input type="text" class="form-control" placeholder="New city" id="changeCity" aria-describedby="basic-addon3">
+                          </div>
+                          
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon3">Old Zip/Postal code</span>
+                            <input type="text" class="form-control" placeholder="New Zip/Postal code" id="changeZip" aria-describedby="basic-addon3">
+                          </div>
+                          
+                          <label for="basic-url" class="form-label">Old State: PLACEHOLDER </label>
+                        
+
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" id="password" placeholder="Enter a new password" required>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="rePassword" class="form-label">Retype password</label>
-                                <input type="password" name="confirm_password" class="form-control" id="rePassword" placeholder="Enter the same password" required>
-                            </div>                        
-                        </div>
-                        <div class="mb-3 form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <label class="form-check-label" for="exampleCheck1">Save my password</label>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="address" class="form-label">Full address</label>
-                                <input type="text" name="address" class="form-control" id="streetAddress" placeholder="Ex: 123 Main St. Anytown, Ma 12345 USA" required>
-                            </div>              
-                        </div>
-
-                        <!--<div class="row">
-                            <div class="col-lg-12">
-                                <label for="address2" class="form-label">Address Line 2</label>
-                                <input type="text" name="address2" class="form-control" id="Address2" placeholder="Address line 2">
-                            </div>              
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="city" class="form-label">City</label>
-                                <input type="text" name="city" class="form-control" id="city" placeholder="Enter your city" required>
-                            </div>              
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <label for="zip" class="form-label">Zip/Postal Code</label>
-                                <input type="text" name="zipCode" class="form-control" id="zipCode">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <label for="state" class="form-label">State</label>
+                                <label for="state" class="form-label">New state</label>
                                 <select id="state" name="state">
+                                    <option value="maintain">Keep current state</option>
                                     <option value="N/A">N/A</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
@@ -161,9 +124,13 @@
                                     <option value="WY">Wyoming</option>
                                 </select>
                             </div>
+
+                            <label for="basic-url" class="form-label">Old country: PLACEHOLDER</label>
+
                             <div class="col-lg-6">
-                                <label for="country" class="form-label">Country</label>
+                                <label for="country" class="form-label">New country</label>
                                 <select id="country" name="country">
+                                    <option value="maintain">Keep current country</option>
                                     <option value="United States of America">United States</option>
                                     <option value="Afganistan">Afghanistan</option>
                                     <option value="Albania">Albania</option>
@@ -413,17 +380,17 @@
                                     <option value="Zimbabwe">Zimbabwe</option>
                                 </select>
                             </div> 
-                            !-->             
+                            -->             
                         </div>
-                        
 
 
-                        <button type="submit" class="btn btn-primary">Register</button>
+
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                       </form>
                 </section>
-                <section class="col-lg-3"></section>
+                <section class="col-lg-2"></section>
             </section>
-        </section>-->
+        </section>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
         
