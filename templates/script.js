@@ -1,4 +1,5 @@
-
+//{title, userdets, image, quantity, price, location, description, tags}
+const items = [{title: "apple", location: 1, quantity: 2}, {title: "toilet paper", location: 0, quantity: 6}]
 
 // data points (hardcoded rn)
   var geojson = {
@@ -26,10 +27,22 @@
     }]
   }
 
+// --- DATA RETRIEVAL & PROCESSING --- \\
+
+function productInfoToGeoJson(product_info) {
+  // NEEDS IMPLEMENTATION
+  return 0;
+}
+
+// --- MAP RENDERING & PINS --- \\
+
+// ---| Initialization
+var map;
 
 mapboxgl.accessToken =
-        'pk.eyJ1IjoiY2x1ZWxlc3M0IiwiYSI6ImNrbGQ5d2hwcjBxNGsydm9iMW9saXAxZW0ifQ.9sZd8Fc8ojC_ycnEHXNZ_Q';
-var map;
+  'pk.eyJ1IjoiY2x1ZWxlc3M0IiwiYSI6ImNrbGQ5d2hwcjBxNGsydm9iMW9saXAxZW0ifQ.9sZd8Fc8ojC_ycnEHXNZ_Q';
+
+// ---| Retrieving Location Data
 navigator.geolocation.getCurrentPosition(successLocation,
     errorLocation, { enableHighAccuracy: true
   })
@@ -41,6 +54,8 @@ function errorLocation() {
 function successLocation(position) {
   setupMap([position.coords.longitude, position.coords.latitude]); // northeastern
 }
+
+// ---| Map Setup
 
 function setupMap(center) {
   map = new mapboxgl.Map({
@@ -75,13 +90,9 @@ function addMarker(marker) {
   });
 }
 
-function selectPin(product_info) {
-  alert("ee");
-}
+// --- SEARCH BAR & RESULTS --- \\
 
-//{title, userdets, image, quantity, price, location, description, tags}
-const items = [{title: "apple", location: 1, quantity: 2}, {title: "toilet paper", location: 0, quantity: 6}]
-
+// ---| Search Results
 // loadList(filterResults("apple"));
 // takes in a dictionary representing item {title: "", description: "", location: ...}
 function loadList(items) {
@@ -95,18 +106,22 @@ function loadList(items) {
     button.textContent = item.title + " x" + item.quantity;
     button.onclick = function() {
       // identifying pins by their location?
-      selectPin(item.location);
+      selectPin(item);
     }
     list.appendChild(button);
   })
 }
 
 //search.onchange = inputHandler;
-const inputHandler = function() {
+const updateSearchResults = function() {
 var term = document.getElementById('search').value;
-  loadList(filterResults(term));
+  loadList(filterSearchResults(term));
 }
 
-function filterResults(input) {
-    return items.filter(item => item.title.includes(input));
+function filterSearchResults(searchInput) {
+  return items.filter(item => item.title.includes(searchInput));
+}
+
+function selectPin(product_info) {
+  alert("ee");
 }

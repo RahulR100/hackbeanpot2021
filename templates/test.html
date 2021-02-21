@@ -56,12 +56,18 @@
         font-family: 'Open Sans', sans-serif;
       }
 
+
+
     </style>
     <script src="script.js" defer></script>
 </head>
 <body>
+<ul id="topbar">
+    <li><button onclick="google.com">Buy</button></li>
+    <li><button onclick="youtube.com">Sell</button></li>
+</ul>
 <button id="menu" type="button" class="collapsible">
-    <input id="search" type="text" onkeyup="inputHandler()">
+    <input id="search" type="text" onkeyup="updateSearchResults()">
     <div id="items" class="btn-group"></div>
 </button>
 <div id='map'></div>
