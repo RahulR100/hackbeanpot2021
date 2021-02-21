@@ -73,6 +73,10 @@ function addMarker(marker) {
     alert("Clicked");
   });
 }
+
+function selectPin(product_info) {
+
+}
 /*
 var map = new mapboxgl.Map({
     container: 'map', // container id
