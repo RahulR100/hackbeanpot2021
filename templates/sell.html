@@ -20,6 +20,7 @@
                             Item for Sale form
                         </h1>
                         {% csrf_token %}
+                        <input type="hidden" id="sellerLocation" name="location" value="">
                         <div class="row">
                             <div class="col-lg-9">
                                 <label for="itemTitle" class="form-label">Item Title</label>
@@ -63,5 +64,17 @@
                 </section>
             </section>
         </section>
+
+        <script>
+            var x = document.getElementById("sellerLocation");
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+              } else {
+                x.value = "0,0";
+              }
+            function showPosition(position) {
+              x.value = "" + position.coords.longitude + "," + position.coords.latitude;
+            }
+        </script>
     </body>
 </html>

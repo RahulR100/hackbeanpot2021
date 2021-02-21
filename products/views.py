@@ -31,6 +31,7 @@ def create_product_view(request, *args, **kwargs):
 		userListed	= request.user
 		thumbnail 	= request.POST.get('thumbnail')
 		quantity 	= request.POST.get('quantity')
+		location	= request.POST.get('location')
 		price 		= request.POST.get('price')
 		description = request.POST.get('description')
 		tags 		= request.POST.get('tags')
@@ -39,6 +40,7 @@ def create_product_view(request, *args, **kwargs):
 							   thumbnail=thumbnail,
 							   userListed=userListed,
 							   quantity=quantity,
+							   location=location,
 							   price=price,
 							   description=description,
 							   tags=tags)
