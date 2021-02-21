@@ -1,98 +1,6 @@
-//{title - str, userdets, image, quantity, price - double, location - str, description -str, tags}
-// location: longitude,latitude
-const allProductInfos = [{title: "Snow",
-location: "-72.4,36.3",
-quantity: 6,
-price: 60.0,
-description: "In your face. Fresh, unused.",
-tags: "food,toiletries"},
-{title: "Assorted toiletries",
-location: "-71.05950035013201,42.35626775057529",
-quantity: 10,
-price: 0,
-description: "Free toothbrushes, toothpaste, and shower supplies",
-tags: "free, toiletries"},
-{title: "Gallon jugs of water",
-location: "-71.0492256976001,42.359249986095406",
-quantity: 20,
-price: 5.00,
-description: "Fresh water, may or may not have served as a habitat for marine life",
-tags: "water, provisions"},
-{title: "Gasoline",
-location: "-71.0678967836412,42.35133639063023",
-quantity: 200,
-price: 10.00,
-description: "Standard Gasoline, prices adjusted to demand",
-tags: "fuel, resources"},
-{title: "Board Games",
-location: "-71.08200686112431,42.34740259854416",
-quantity: 30,
-price: 0,
-description: "Free board games to pass the time",
-tags: "free, games, toys, children"},
-{title: "Portable phone charger",
-location: "-71.0787810741063,42.342791035061445",
-quantity: 2,
-price: 25,
-description: "Something to charge your phone with. Comes pre-charged",
-tags: "electricity, technology"},
-{title: "Toilet paper",
-location: "-71.09216652813654,42.33736222341653",
-quantity: 50,
-price: 0,
-description: "Free toilet paper, 1-ply only",
-tags: "free, toiletries, necessity"},
-{title: "Children winter clothing",
-location: "-71.08694752795913,42.348209640748216",
-quantity: 100,
-price: 0,
-description: "Free winter clothing for children",
-tags: "children, clothes, necessities"},
-{title: "Knit clothes",
-location: "-71.08685332994469,42.34042391929855",
-quantity: 7,
-price: 5,
-description: "Cheap winter garmets made with love",
-tags: "clothing, necessities"},
-{title: "Hand sanitizer",
-location: "-71.0699396687484,42.340937035396095",
-quantity: 50,
-price: 1,
-description: "Home made hand sanitizer for your pesky germs",
-tags: "sanitary, clean, toiletries, necessities"},
-{title: "Warm socks",
-location: "-71.09724074187598,42.3464840409209",
-quantity: 200,
-price: 0,
-description: "Free, warm socks. Not necessarily clean or good-smelling",
-tags: "free, clothing"}];
-const items = [{title: "apple", location: 1, quantity: 2}, {title: "toilet paper", location: 0, quantity: 6}]
-
-// data points (hardcoded rn)/*
-  /*var geojson = {
-    type: 'FeatureCollection',
-    features: [{
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-71.0875, 42.3398]
-      },
-      properties: {
-        title: 'Northeastern',
-        description: 'Virtual Quad ;)'
-      }
-    }, {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-71.1049, 42.3374]
-        },
-      properties: {
-        title: 'Boston Children Hospital',
-        description: 'For the children'
-      }
-    }]
-  }*/
+console.log([1, 2, 3].map(n => n+1));
+const allProductInfos = JSON.parse(JSON.parse(document.getElementById('database_data').innerHTML))
+  .map(t => t.fields);
 
 // --- DATA RETRIEVAL & PROCESSING --- \\
 
@@ -127,7 +35,7 @@ function filteredProductInfos() {
     || productFilters.quantity(productInfo.quantity)
     || productFilters.price(productInfo.price)
     || productFilters.description(productInfo.description)
-    || productFilters.tags(productInfo);
+    || productFilters.tags(productInfo.tags);
 
   return allProductInfos.filter(totalFilter);
 }
@@ -170,7 +78,7 @@ function setupMap(center) {
   // add markers to map
   filteredProductInfos().forEach(productInfo => addMarker(productInfoToFeatures(productInfo)));
 }
-console.log(filteredProductInfos());
+
 function updateMarkers(productInfos) {
   markers.forEach(function(marker) {
     marker.remove();
@@ -231,6 +139,7 @@ const updateSearchResults = function() {
   const inString = (sub, sup) => sup.toLowerCase().includes(sub.toLowerCase());
   productFilters.title = title => inString(searchInput, title);
   productFilters.description = description => inString(searchInput, description);
+  productFilters.tags = tags => inString(searchInput, tags);
 
   const products = filteredProductInfos();
 
