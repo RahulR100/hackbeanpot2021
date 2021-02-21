@@ -8,6 +8,7 @@ from .models import User
 # Create your views here.
 def register_view(request, *args, **kwargs):
 	form = UserRegisterForm(request.POST or None)
+	
 	if form.is_valid():
 		username 		= request.POST.get('username')
 		first_name 		= request.POST.get('first_name')
@@ -27,11 +28,15 @@ def register_view(request, *args, **kwargs):
 							address=address,
 							is_seller=is_seller)
 
+		request.session['login_success'] = True
+		return redirect('home')
+
 	return render(request, 'register.html', {})
 
 def login_view(request, *args, **kwargs):
 	form = UserLoginForm(request.POST or None)
-	if form.is_valid():
+	
+	if request.method == "POST":
 		username = request.POST.get('username')
 		password = request.POST.get('password')
 
@@ -40,9 +45,11 @@ def login_view(request, *args, **kwargs):
 							password=password)
 
 		if user is not None:
+			request.session['login_success'] = True
 			login(request, user)
+			return redirect('home')
 		else:
-			pass
-			#error here
+			request.session['login_success'] = False
+			return redirect('login')
 
-	return render(request, 'login.html', {})
+	return render(request, 'login.html', {'form': form})

@@ -28,6 +28,19 @@
         cursor: pointer;
       }
 
+      .button { 
+        color: #fff; 
+        background-color: #555; 
+        padding: 1em; 
+        margin: 1em;
+        position: absolute; 
+        right: 1em; 
+        top: 1em; 
+        border-radius: 0.5em;
+        border-bottom: 2px #222 solid; 
+        cursor: pointer; 
+      }
+
       .mapboxgl-popup {
         max-width: 200px;
       }
@@ -36,33 +49,63 @@
         text-align: center;
         font-family: 'Open Sans', sans-serif;
       }
+
+      #menu {
+        width: 20vw;
+        padding: 10px;
+        display: block;
+      }
+      #items {
+        width: 20vw;
+        padding: 10px 0;
+        display: block;
+      }
+      #search {
+
+      }
+      .btn-group button {
+        background-color: #EEEEEE;
+        padding: 4px 8px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        width: 16vw; /* Set a width if needed */
+        display: none; /* Make the buttons appear below each other */
+      }
     </style>
   </head>
   <body>
+
+    {% if login_success %}
+      <p>LOGIN SUCCESS!</p>
+    {% endif %}
    <div id='map'></div>
+  
+    <div id="menu" class="sidebar">
+      <input id="search" type="text" onkeyup="inputHandler()">
+      <div id="items" class="btn-group">
+  
+      </div>
+    <div id='map'></div>
 
     <script>
       mapboxgl.accessToken = 
         'pk.eyJ1IjoiY2x1ZWxlc3M0IiwiYSI6ImNrbGQ5d2hwcjBxNGsydm9iMW9saXAxZW0ifQ.9sZd8Fc8ojC_ycnEHXNZ_Q';
       
-      
-      // var loc = [-77.0369, 38.9072]; // washington dc
-
-      
+      // finds device's current location (is a geolocation api)
       navigator.geolocation.getCurrentPosition(successLocation, 
         errorLocation, { enableHighAccuracy: true
       })
     
-      
+      // in case unable to find device's location
       function errorLocation() {
         setupMap([0,0])
-        
       }
 
+      // with device's location, sets up map
       function successLocation(position) {
-        setupMap([position.coords.longitude, position.coords.latitude]); // northeastern 
+        setupMap([position.coords.longitude, position.coords.latitude]); 
       }
 
+      // sets up map and pins 
       function setupMap(center) {
         var map = new mapboxgl.Map({
           container: 'map',
@@ -71,7 +114,7 @@
             zoom: 14
         })
 
-        // my location 
+        // my location pin
         var myLocation = new mapboxgl.Marker()
           .setLngLat(center)
           .addTo(map);
