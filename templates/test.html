@@ -6,14 +6,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.27.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.27.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; right: 0; top:0; bottom:0; width:80vw;}
-        .button { color: #fff; background-color: #555; padding: 1em; margin: 1em;
-        position: absolute; right: 1em; top: 1em; border-radius: 0.5em;
-        border-bottom: 2px #222 solid; cursor: pointer; }
+        #map {
+            height: 100vh;
+            width: 80vw;
+            position: absolute;
+            top: 0;
+            right: 0;}
         #resizeMap { top: 5em; }
         #menu {
             width: 20vw;
@@ -35,20 +37,34 @@
              width: 16vw; /* Set a width if needed */
             //display: none; /* Make the buttons appear below each other */
         }
+        .marker {
+            background-image: url('https://www.pngfind.com/pngs/m/114-1147878_location-poi-pin-marker-position-red-map-google.png');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .mapboxgl-popup {
+        max-width: 200px;
+      }
+
+      .mapboxgl-popup-content {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
     </style>
     <script src="script.js" defer></script>
 </head>
 <body>
-<div id="menu" class="sidebar">
+<button id="menu" type="button" class="collapsible">
     <input id="search" type="text" onkeyup="inputHandler()">
     <div id="items" class="btn-group">
 
     </div>
-</div>
+</button>
 <div id='map'></div>
-<div id='resizeDiv' class='button'>Resize container</div>
-<div id='resizeMap' class='button'>Fix map</div>
-
 
 </body>
 </html>
