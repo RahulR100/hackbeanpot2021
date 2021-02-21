@@ -15,3 +15,11 @@ class UserRegisterForm(forms.ModelForm):
 			'address',
 			'is_seller'
 		]
+
+class UserLoginForm(forms.ModelForm):
+	class Meta:
+		model = User
+		fields = [
+			'username',
+			'password'
+		]
