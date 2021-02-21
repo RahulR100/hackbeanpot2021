@@ -71,3 +71,87 @@ body{
 .shadow-none {
     box-shadow: none!important;
 }
+
+body { margin:0; padding:0; }
+
+#map {
+    height: 91vh;
+    width: 80vw;
+    position: absolute;
+    bottom: 0;
+    right: 0;}
+#resizeMap {
+    top: 5em;
+}
+
+#menu {
+    width: 20vw;
+    padding: 10px;
+    display: block;
+}
+#items {
+    width: 20vw;
+    padding: 10px 0;
+    display: block;
+}
+#search {
+
+}
+
+.btn-group button {
+    background-color: #EEEEEE;
+    padding: 4px 8px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 16vw; /* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+    display: none; /* Make the buttons appear below each other */
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  background-color: #444;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+.marker {
+    background-image: url('https://www.pngfind.com/pngs/m/114-1147878_location-poi-pin-marker-position-red-map-google.png');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.mapboxgl-popup {
+    max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.hidden {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    font-size: 0px;
+}
