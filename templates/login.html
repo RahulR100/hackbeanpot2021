@@ -15,16 +15,17 @@
             <section class = "row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
                     <form class="form-container" method="POST">
-                      <h2>Log In</h2>
+                        <h2>Log In</h2>
                         {% csrf_token %}
-                        <div class="mb-3">
+                        <!--<div class="mb-3">
                           <label for="username" class="form-label">Username</label>
                           <input type="text" name="username" class="form-control" id="username">
                         </div>
                         <div class="mb-3">
                           <label for="password" class="form-label">Password</label>
-                          <input type="password" name="pasword" class="form-control" id="password">
-                        </div>
+                          <input type="password" name="password" class="form-control" id="password">
+                        </div>-->
+                        {{ form.as_p }}
                         <button type="submit" class="btn btn-primary">Log in</button>
                       </form>
                 </section>
