@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet'/>
+    <style>
+        body { margin:0; padding:0; }
+        #map {
+            height: 100vh;
+            width: 80vw;
+            position: absolute;
+            top: 0;
+            right: 0;}
+        #resizeMap { top: 5em; }
+        #menu {
+            width: 20vw;
+            padding: 10px;
+            display: block;
+        }
+        #items {
+            width: 20vw;
+            padding: 10px 0;
+            display: block;
+        }
+        #search {
+
+        }
+        .btn-group button {
+             background-color: #EEEEEE;
+            padding: 4px 8px; /* Some padding */
+             cursor: pointer; /* Pointer/hand icon */
+             width: 16vw; /* Set a width if needed */
+            display: block; /* Make the buttons appear below each other */
+            //display: none; /* Make the buttons appear below each other */
+        }
+        .marker {
+            background-image: url('https://www.pngfind.com/pngs/m/114-1147878_location-poi-pin-marker-position-red-map-google.png');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .mapboxgl-popup {
+        max-width: 200px;
+      }
+
+      .mapboxgl-popup-content {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+
+
+    </style>
+    <script src="script.js" defer></script>
+</head>
+<body>
+<ul id="topbar">
+    <li><button onclick="google.com">Buy</button></li>
+    <li><button onclick="youtube.com">Sell</button></li>
+</ul>
+<button id="menu" type="button" class="collapsible">
+    <input id="search" type="text" onkeyup="updateSearchResults()">
+    <div id="items" class="btn-group"></div>
+</button>
+<div id='map'></div>
+</body>
+</html>
