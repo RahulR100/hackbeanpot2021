@@ -5,9 +5,8 @@ navigator.geolocation.getCurrentPosition(successLocation,
         errorLocation, { enableHighAccuracy: true
       })
 
-
-      function errorLocation() {
-        setupMap([0,0])
+function errorLocation() {
+    setupMap([0,0])
 
       }
 
