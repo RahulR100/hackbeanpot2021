@@ -1,4 +1,3 @@
-console.log([1, 2, 3].map(n => n+1));
 const allProductInfos = JSON.parse(JSON.parse(document.getElementById('database_data').innerHTML))
   .map(t => t.fields);
 
