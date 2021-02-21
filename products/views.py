@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core import serializers
+from django.contrib.auth.decorators import login_required
 
 import json
 
@@ -13,7 +14,7 @@ def home_view(request, *args, **kwargs):
 
 	context = {
 		'login_success': False if request.session.get('login_success') is None else request.session.get('login_success'),
-		'data': json.dumps(serializers.serialise('qs', queryset))
+		'data': json.dumps(serializers.serialize('json', queryset))
 	}
 
 	if request.session.get('login_success') is not None:
@@ -21,11 +22,13 @@ def home_view(request, *args, **kwargs):
 
 	return render(request, 'home.html', context)
 
+@login_required
 def create_product_view(request, *args, **kwargs):
 	form = CreateProductForm(request.POST or None)
 
 	if form.is_valid():
 		title 		= request.POST.get('title')
+		userListed	= request.user
 		thumbnail 	= request.POST.get('thumbnail')
 		quantity 	= request.POST.get('quantity')
 		price 		= request.POST.get('price')
@@ -34,6 +37,7 @@ def create_product_view(request, *args, **kwargs):
 
 		Product.objects.create(title=title,
 							   thumbnail=thumbnail,
+							   userListed=userListed,
 							   quantity=quantity,
 							   price=price,
 							   description=description,

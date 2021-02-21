@@ -47,7 +47,11 @@ def login_view(request, *args, **kwargs):
 		if user is not None:
 			request.session['login_success'] = True
 			login(request, user)
-			return redirect('home')
+
+			if request.GET.get('next') is not None:
+				return redirect(request.GET.get('next'))
+			else:
+				return redirect('home')
 		else:
 			request.session['login_success'] = False
 
