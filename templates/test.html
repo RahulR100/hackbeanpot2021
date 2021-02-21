@@ -35,6 +35,7 @@
             padding: 4px 8px; /* Some padding */
              cursor: pointer; /* Pointer/hand icon */
              width: 16vw; /* Set a width if needed */
+            display: block; /* Make the buttons appear below each other */
             //display: none; /* Make the buttons appear below each other */
         }
         .marker {
@@ -61,11 +62,8 @@
 <body>
 <button id="menu" type="button" class="collapsible">
     <input id="search" type="text" onkeyup="inputHandler()">
-    <div id="items" class="btn-group">
-
-    </div>
+    <div id="items" class="btn-group"></div>
 </button>
 <div id='map'></div>
-
 </body>
 </html>
