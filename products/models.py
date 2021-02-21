@@ -9,4 +9,4 @@ class Product(models.Model):
 	price 		= models.DecimalField(decimal_places=2, max_digits=10)
 	location 	= models.TextField()
 	description = models.TextField(default="No description provided.")
-	tags 		= models.JSONField()
+	tags 		= models.TextField()
