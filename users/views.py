@@ -27,6 +27,8 @@ def register_view(request, *args, **kwargs):
 							address=address,
 							is_seller=is_seller)
 
+		return redirect('home')
+
 	return render(request, 'register.html', {})
 
 def login_view(request, *args, **kwargs):
