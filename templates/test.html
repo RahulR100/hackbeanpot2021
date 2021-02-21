@@ -10,13 +10,17 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet'/>
     <style>
         body { margin:0; padding:0; }
+
         #map {
-            height: 100vh;
+            height: 91vh;
             width: 80vw;
             position: absolute;
-            top: 0;
+            bottom: 0;
             right: 0;}
-        #resizeMap { top: 5em; }
+        #resizeMap {
+            top: 5em;
+        }
+
         #menu {
             width: 20vw;
             padding: 10px;
@@ -38,6 +42,31 @@
             display: block; /* Make the buttons appear below each other */
             //display: none; /* Make the buttons appear below each other */
         }
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+
+        li {
+          float: left;
+        }
+
+        li a {
+          display: block;
+          background-color: #444;
+          text-align: center;
+          padding: 16px;
+          text-decoration: none;
+        }
+
+        li a:hover {
+          background-color: #111;
+        }
+
         .marker {
             background-image: url('https://www.pngfind.com/pngs/m/114-1147878_location-poi-pin-marker-position-red-map-google.png');
         background-size: cover;
@@ -62,14 +91,20 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-<ul id="topbar">
-    <li><button onclick="google.com">Buy</button></li>
-    <li><button onclick="youtube.com">Sell</button></li>
-</ul>
+<div>
+    <ul id="topbar">
+        <li><a href="google.com">Buy</a></li>
+        <li><a href="youtube.com">Sell</a></li>
+        <li style="float:right"><a href="#Login Form">Login</a></li>
+    </ul>
+</div>
+<div>
 <button id="menu" type="button" class="collapsible">
     <input id="search" type="text" onkeyup="updateSearchResults()">
     <div id="items" class="btn-group"></div>
+    <div id="products"></div>
 </button>
 <div id='map'></div>
+    </div>
 </body>
 </html>
