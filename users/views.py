@@ -47,9 +47,20 @@ def login_view(request, *args, **kwargs):
 		if user is not None:
 			request.session['login_success'] = True
 			login(request, user)
-			return redirect('home')
+
+			if request.GET.get('next') is not None:
+				return redirect(request.GET.get('next'))
+			else:
+				return redirect('home')
 		else:
 			request.session['login_success'] = False
-			return redirect('login')
 
-	return render(request, 'login.html', {'form': form})
+	context = {
+		'form': form,
+		'status': request.session.get('login_success')
+	}
+
+	if request.session.get('login_success') is not None:
+		del request.session['login_success']
+
+	return render(request, 'login.html', context)

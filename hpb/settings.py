@@ -136,3 +136,5 @@ STATIC_URL = '/templates/'
 STATICFILES_DIRS = [
     BASE_DIR / 'templates',
 ]
+
+LOGIN_URL = '/login/'

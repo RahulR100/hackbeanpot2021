@@ -8,6 +8,9 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet'/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
     <style>
         body { margin:0; padding:0; }
 
@@ -40,7 +43,7 @@
              cursor: pointer; /* Pointer/hand icon */
              width: 16vw; /* Set a width if needed */
             display: block; /* Make the buttons appear below each other */
-            //display: none; /* Make the buttons appear below each other */
+            display: none; /* Make the buttons appear below each other */
         }
 
         ul {
@@ -91,6 +94,7 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+<<<<<<< HEAD
 <div>
     <ul id="topbar">
         <li><a href="google.com">Buy</a></li>
@@ -99,8 +103,27 @@
     </ul>
 </div>
 <div>
+=======
+    <section class="row">
+        <div class="col-lg-2">
+            <button onclick="google.com">Buy</button>
+        </div>
+        <div class="col-lg-2">
+            <button onclick="youtube.com">Sell</button>
+        </div>
+    </section>
+<ul id="topbar">
+    <li><button onclick="google.com">Buy</button></li>
+    <li><button onclick="youtube.com">Sell</button></li>
+</ul>
+>>>>>>> main
 <button id="menu" type="button" class="collapsible">
-    <input id="search" type="text" onkeyup="updateSearchResults()">
+    <section class="row">
+        <div class="col-lg-7">
+            <input id="search" type="text" placeholder="Search for items" onkeyup="updateSearchResults()">
+        </div>
+    </section>
+    
     <div id="items" class="btn-group"></div>
     <div id="products"></div>
 </button>
